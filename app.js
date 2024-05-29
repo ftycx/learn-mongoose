@@ -7,13 +7,13 @@ const connect = require('./schemas'); // MongoDB 연결 함수
 
 // 라우터 모듈을 불러와 변수에 할당
 const indexRouter = require('./routes/index');
-const usersRouter = require('./roures/users');
+const usersRouter = require('./routes/users');
 const commentsRouter = require('./routes/comments');
 
 const app = express(); // Express 애플리케이션 생성
 
 // 포트 설정 -> 환경 변수에서 PORT를 가져오거나 포트 기본값을 3002로 설정
-app.set('port', process.env.PORT || 3002);
+app.set('port', process.env.PORT || 3003);
 app.set('view engine', 'html'); // 뷰 엔진 -> html로 설정
 
 // Nunjucks 설정
@@ -35,8 +35,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // 라우터를 등록
 app.use('/', indexRouter);
-app.use('/users', usersRouter)
-app.use('/comments', commentsRouter)
+app.use('/users', usersRouter);
+app.use('/comments', commentsRouter);
 
 // 404 에러 처리 미들웨어 
 app.use((req, res, next) => {
